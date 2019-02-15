@@ -1,0 +1,55 @@
+extends layout
+
+block content
+  a(type="button" href='/').btn.btn-success AnaSayfa  
+  h1 Kitapçı
+  p Kitapçıya Hoşgeldiniz
+  
+  table.table
+    thead
+     tr
+       th(scope="col") #
+       th(scope="col") Kitap Adı
+       th(scope="col") Yazar
+       th(scope="col") Alan Kişi
+       th(scope="col") Aldığı Tarihi
+    tbody
+
+      - for(var i = 0; i < title.length; i++) {
+      tr  
+        th(scope="row")=title[i].kitapid
+        td=title[i].kitapadi
+        td=title[i].yazaradi
+         if title[i].kitabıalan  
+           td=title[i].kitabıalan
+         else
+          td Kütüphanede
+         if title[i].kitabtarih
+          td=title[i].kitabtarih 
+         else
+          td -
+         
+      - }
+  h3 Data Sil
+    div.input
+      label(for="kitapID")
+        font(size="2") Güncellenecek Kitap ID 
+      br
+      input(type="text", id="kitapID", name="kitapID")
+      br
+    div.input
+      label(for="alan")
+        font(size="2") Kitabı Alan
+      br
+      input(type="text", id="alan", name="alan")
+    div.input
+      label(for="tarih")
+        font(size="2") Kitabın Alındığı Tarih
+      br
+      input(type="tarih", id="tarih", name="tarih")
+      br
+    button(type="button" onclick='guncelHatasi();')#insert 
+        font(size="2") Güncelle
+
+    script(src="/javascripts/forms.js")
+      
